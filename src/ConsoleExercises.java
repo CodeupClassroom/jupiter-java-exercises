@@ -1,0 +1,2 @@
+public class ConsoleExercises {
+}
