@@ -6,12 +6,15 @@ public class ControlStatementsLec {
         // no >== ,or <==, or === because only value comparisons are available
         // truthy and falsy values don't exist in Java
 
-//        int randomNumber = 6;
-//        System.out.println(randomNumber == 6);
+        int randomNumber = 6;
+        System.out.println(randomNumber == 6);
 
-//        char randomChar = 'Y';
-//        System.out.println(randomChar == 'y');
+        char randomChar = 'Y';
+        System.out.println(randomChar == 'y');
 
+        int newNumber = 3;
+        int otherNumber = 3;
+        System.out.println(newNumber == otherNumber);
 
 
         // ==================== Logical Operators
@@ -24,8 +27,8 @@ public class ControlStatementsLec {
         // x will only increment in second condition if first condition is true using &&
 //                int x = 2;
 //                int y = 3;
-
-//                if (true && ++x == y) {
+//
+//                if (false & ++x == y) {
 //                    System.out.println("Equal");
 //                } else {
 //                    System.out.println("Not equal");;
@@ -33,21 +36,21 @@ public class ControlStatementsLec {
 //                System.out.println(x);
 
 
-        // ==================== Slide 7
+        // ==================== Strings
 
         // DO NOT COMPARE STRINGS WITH == !!!!
 
-//                Scanner sc = new Scanner(System.in);
-//                String cat1 = sc.nextLine();
-//                String cat2 = "cat";
-//                System.out.println(cat1);
-//                System.out.println(cat2);
-//                System.out.println(cat1 == cat2);
+                Scanner sc = new Scanner(System.in);
+                String cat1 = sc.nextLine();
+                String cat2 = "CAT";
+                System.out.println(cat1);
+                System.out.println(cat2);
+                System.out.println(cat1.equalsIgnoreCase(cat2));
 
         // do use equals(),
 
-//    boolean stringValuesAreEqual = "Test".equals("Tes");
-//    System.out.printf("The result is: %s", stringValuesAreEqual);
+    boolean stringValuesAreEqual = "Test".equals("Test");
+    System.out.printf("The result is: %s", stringValuesAreEqual);
 
 
         // or use equalsIgnoreCase()
@@ -67,17 +70,17 @@ public class ControlStatementsLec {
         // basically the same as JS :)
 
 
-//            String caseSwitch = "Fred";
-//            switch (caseSwitch) {
-//                case "bob":
-//                    System.out.println("Case 1");
-//                    break;
-//                case "fred":
-//                    System.out.println("Case 2");
-//                    break;
-//                default :
-//                    System.out.println("Default case");
-//                    break;
-//            }
+            String caseSwitch = "Fred";
+            switch (caseSwitch) {
+                case "bob":
+                    System.out.println("Case 1");
+                    break;
+                case "fred":
+                    System.out.println("Case 2");
+                    break;
+                default :
+                    System.out.println("Default case");
+                    break;
+            }
     }
 }
