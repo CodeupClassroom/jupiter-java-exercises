@@ -4,22 +4,39 @@ public class StringLecture {
 
 // ------ .equals(String anotherString)
 
-//        String one = "2";
-//        String two = "2";
+//        String one = "bob";
+//        String two = "bob";
+
 //        System.out.println(one.equals(two));
+
+//        System.out.println("bob".equals("steve"));
+//        System.out.println(one.equals(two));
+
 
 
 // ------ .equalsIgnoreCase(String anotherString)
 
-//        String greeting = "howdy";
-//        System.out.println(greeting.equalsIgnoreCase("HoWDy"));
+//        String greeting1 = "howdy";
+//        String greeting2 = "howdy";
+//        String greeting3 = "howdy";
+//
+//        // greeting1 has to match with greeting2 and greeting 3
+//
+//        if (greeting1.equals(greeting2) && greeting1.equals(greeting3)) {
+//
+//        }
 
+
+//        greeting.equals(greeting);
+//        System.out.println(greeting.equalsIgnoreCase("HoWDy"));
+//
 
 // ------ .startsWith(String prefix)
 
-//        String title = "Dr. Doctor";
-//        boolean isADoctor = title.toLowerCase().startsWith("dr");
+//        String title = "Dracula";
+//        boolean isADoctor = title.toUpperCase().startsWith("DR.");
 //        System.out.println(isADoctor);
+//        System.out.println(title);
 
 
 // ------ .endsWith(String suffix)
@@ -69,13 +86,24 @@ public class StringLecture {
 //        String search = "tiny cats looking cute";
 //        String parsedSearch = search.replace("cats", "dogs");
 //        System.out.println(parsedSearch);
+//        System.out.println(search);
 
 
 // ------ .substring(int beginIndex[, int endIndex])
 
 //        String name = "Justin Bob Reich";
-//        String firstName = name.substring(0, name.indexOf(" "));
-//
+//        System.out.println(name.substring(3));
+
+//        System.out.println(name.lastIndexOf("i"));
+//        System.out.println(name.indexOf(" "));
+//        name.substring(0, 3);
+//        System.out.println(name.substring(0, 3));
+//        System.out.println(name.indexOf(" "));
+//        String firstName = name.substring(0, 6);
+
+//        System.out.println(firstName);
+
+
 //        String lastName = name.substring(name.lastIndexOf(" ") + 1);
 //        System.out.println(firstName);
 //        System.out.println(lastName);
@@ -108,14 +136,14 @@ public class StringLecture {
 
 // convert word to pig latin word (assume word doesn't begin with a vowel or end in ay)
 
-    //String word1 = "cat";
-    //String pigLatinWord = word1
-    //    .trim()
-    //    .toLowerCase()
-    //    .substring(1)
-    //    .concat(word1.substring(0, 1).toLowerCase())
-    //    .concat("ay");
-    //System.out.println(pigLatinWord);
+//    String word1 = "cat";
+//    String pigLatinWord = word1
+//        .trim() // "cat"
+//        .toLowerCase() // "cat"
+//        .substring(1) // "at"
+//        .concat(word1.substring(0, 1).toLowerCase()) // "atc"
+//        .concat("ay"); // "atcay"
+//    System.out.println(pigLatinWord);
 
 
 
