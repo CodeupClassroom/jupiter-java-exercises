@@ -7,7 +7,17 @@ class Student {
 //        public String name;
 //        public String cohort;
 //
+//        public void testMethod() {
+//            System.out.println("Will this run?");
+//        }
+//
+//        public Student() {
+//            System.out.println("New student created!");
+//            testMethod();
+//        }
+//
 //        public Student(String studentName) {
+//            this();
 //            name = studentName;
 //            cohort = "Unassigned";
 //        }
@@ -16,7 +26,7 @@ class Student {
 //            name = studentName;
 //            cohort = assignedCohort;
 //        }
-
+//
 
     // ======================== slide 9 (this keyword)
 
@@ -39,16 +49,29 @@ class Student {
 
     // ======================== slide 10 (visibility)
 
-//        public String name;
-//        private double grade;
-//
-//        public Student(String name, double grade) {
-//            this.name = name;
-//            this.grade = grade;
-//        }
-//
-//        public double shareGrade() {
-//            return grade;
-//        }
-//
+        private String name;
+        private double grade;
+
+        public Student(String name, double grade) {
+            this.name = name;
+            this.grade = grade;
+        }
+
+        // getter
+        public double shareGrade() {
+            return grade;
+        }
+
+        // setter
+        public void changeGrade(double grade) {
+            this.grade = grade;
+        }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 }

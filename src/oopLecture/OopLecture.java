@@ -2,14 +2,16 @@ package oopLecture;
 
 public class OopLecture {
 
+    public int testNum = 3;
+
     public static void main(String[] args) {
 
         // ======================== slide 3 (classes and objects)
 //
-            Person p1 = new Person();
+//            Person p1 = new Person();
 //            p1.firstName = "Justin";
 //            p1.lastName = "Reich";
-            System.out.println(p1.lastName);
+//            System.out.println(p1.lastName);
 
 //            Person p2 = new Person();
 //            p2.firstName = "Justin";
@@ -82,6 +84,19 @@ public class OopLecture {
 
         // -- DogHelper Example --
 
+//        Dog dog = new Dog();
+//        dog.name = "Sparky";
+//        dog.age = 3;
+//        dog.callForDog("Sparky");
+//
+//
+//        System.out.println(DogHelper.NUMBER_OF_DOG_BREEDS);
+//
+//        // Sparky's Age in Dog Years
+//
+//        System.out.println(DogHelper.humanToDogYears(dog.age));
+
+
 
 
 
@@ -101,7 +116,11 @@ public class OopLecture {
 
         // ======================== slide 8 (constructors)
 
+//            Student s1 = new Student("bob");
+
+
 //            Student jane = new Student("Jane Doe", "Zion");
+//            Student connor = new Student("Connor Wulf", "Jupiter");
 //            System.out.print(jane.name + " - ");
 //            System.out.println(jane.cohort); // prints "Jane Doe - Zion"
 //            Student john = new Student("John Doe");
@@ -122,13 +141,19 @@ public class OopLecture {
         // ======================== slide 10 (visibility)
 
 //            Student student = new Student("John Doe", 82.4);
-//            System.out.println(student.name) // "John Doe"
-//            // DON'T DO THIS - can't access private properties outside the class
-//            System.out.println(student.grade);
+//            System.out.println(student.name); // "John Doe"
+//            student.name = "Robert Smith";
+//            System.out.println(student.name);
+////            // DON'T DO THIS - can't access private properties outside the class
+////            System.out.println(student.grade);
 //            System.out.println(student.shareGrade()); // Do this instead
-
+//
+//            student.changeGrade(70);
+//
+//            System.out.println(student.shareGrade());
 
     }
+
 
 }
 
