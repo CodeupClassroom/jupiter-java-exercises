@@ -1,6 +1,4 @@
-package abstractClassesInheritance;
-
-import java.util.List;
+package abstractClassesInterfaces;
 
 public interface McFranchise {
 

@@ -1,6 +1,4 @@
-package abstractClassesInheritance;
-
-import java.util.List;
+package abstractClassesInterfaces;
 
 // we'll declare this an abstract class
 public abstract class Franchise {

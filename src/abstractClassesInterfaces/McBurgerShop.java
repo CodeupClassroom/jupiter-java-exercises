@@ -1,4 +1,4 @@
-package abstractClassesInheritance;
+package abstractClassesInterfaces;
 
 import java.util.List;
 
