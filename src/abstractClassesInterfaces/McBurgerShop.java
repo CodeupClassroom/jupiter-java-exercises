@@ -1,57 +1,51 @@
 package abstractClassesInterfaces;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class McBurgerShop implements McFranchise{
+public class McBurgerShop implements McFranchise {
 
-    /*
-     * Manager (i.e. "Ronald McDonald")
-     * Menu Items (i.e. ['Big Mac', 'French Fries', ...]
-     * Menu Categories (i.e. ['Sandwiches', 'Sides', 'Desserts', ...]
-     * Max Seating Capacity (i.e. 250)
-     * Recipe to Cook Items
-     * Opening Time
-     * Closing Time
-     */
+    // Properties (can have as many custom as we want)
+    protected List<String> menuItems;
+    protected List<String> menuCategories;
+    protected int seatingCapacity;
+    protected int openTime;
+    protected int closeTime;
+    protected boolean iceCreamTime;
 
-    private String manager;
-    private List<String> menuItems;
-    private List<String> menuCategories;
-    private int maxSeatingCapacity;
-    private int openingTime;
-    private int closingTime;
 
-    public McBurgerShop(String manager, List<String> menuItems, List<String> menuCategories, int maxSeatingCapacity, int openingTime, int closingTime) {
-        this.manager = manager;
+
+    // Constructor (for McBurgerShop)
+    public McBurgerShop(List<String> menuItems, List<String> menuCategories, int seatingCapacity, int openTime, int closeTime, boolean iceCreamTime) {
         this.menuItems = menuItems;
         this.menuCategories = menuCategories;
-        this.maxSeatingCapacity = maxSeatingCapacity;
-        this.openingTime = openingTime;
-        this.closingTime = closingTime;
+        this.seatingCapacity = seatingCapacity;
+        this.openTime = openTime;
+        this.closeTime = closeTime;
+        this.iceCreamTime = iceCreamTime;
     }
 
-    // Overrides from Interface
-
-
+    // Overrides
     @Override
-    public void cookMeal(String foodItem) {
-        System.out.println("The kitchen just cooked a " + foodItem);
+    public void broilStuff(String menuItem) {
+        System.out.println("The kitchen just cooked an order of: " + menuItem);
     }
 
     @Override
-    public void businessHours() {
-        System.out.println("We are open from " + getOpeningTime() + " - " + getClosingTime());
+    public void businessHours(int openTime, int closeTime) {
+        System.out.println("We are open from  " + openTime + " to " + closeTime);
+    }
+
+    @Override
+    public String iceCreamMachineWorking() {
+        if (this.iceCreamTime) {
+            return "Time for ice cream!";
+        }  else {
+            return "No ice cream for you";
+        }
     }
 
     // Getters and Setters
-    public String getManager() {
-        return manager;
-    }
-
-    public void setManager(String manager) {
-        this.manager = manager;
-    }
-
     public List<String> getMenuItems() {
         return menuItems;
     }
@@ -68,27 +62,35 @@ public class McBurgerShop implements McFranchise{
         this.menuCategories = menuCategories;
     }
 
-    public int getMaxSeatingCapacity() {
-        return maxSeatingCapacity;
+    public int getSeatingCapacity() {
+        return seatingCapacity;
     }
 
-    public void setMaxSeatingCapacity(int maxSeatingCapacity) {
-        this.maxSeatingCapacity = maxSeatingCapacity;
+    public void setSeatingCapacity(int seatingCapacity) {
+        this.seatingCapacity = seatingCapacity;
     }
 
-    public int getOpeningTime() {
-        return openingTime;
+    public int getOpenTime() {
+        return openTime;
     }
 
-    public void setOpeningTime(int openingTime) {
-        this.openingTime = openingTime;
+    public void setOpenTime(int openTime) {
+        this.openTime = openTime;
     }
 
-    public int getClosingTime() {
-        return closingTime;
+    public int getCloseTime() {
+        return closeTime;
     }
 
-    public void setClosingTime(int closingTime) {
-        this.closingTime = closingTime;
+    public void setCloseTime(int closeTime) {
+        this.closeTime = closeTime;
+    }
+
+    public boolean isIceCreamTime() {
+        return iceCreamTime;
+    }
+
+    public void setIceCreamTime(boolean iceCreamTime) {
+        this.iceCreamTime = iceCreamTime;
     }
 }

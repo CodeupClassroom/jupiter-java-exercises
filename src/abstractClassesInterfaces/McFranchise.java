@@ -1,10 +1,15 @@
 package abstractClassesInterfaces;
 
+// Declaring this as an 'interface'
 public interface McFranchise {
+    // Properties
+    String companyName = "McDonald's"; // this String is a constant
 
-    // Properties (constant)
-    String companyName = "McBurgers";
+    // We won't have a constructor in an 'interface'  ( only in abstract classes )
 
-    public void cookMeal(String foodItem);
-    public void businessHours();
+    // Abstract Methods (that we have to completely write out in any class that IMPLEMENTS this interface
+    void broilStuff(String menuItem);
+    void businessHours(int openTime, int closeTime);
+    String iceCreamMachineWorking();
+    void greetCustomer(); // declare as abstract
 }
