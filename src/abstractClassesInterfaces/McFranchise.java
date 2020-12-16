@@ -11,5 +11,5 @@ public interface McFranchise {
     void broilStuff(String menuItem);
     void businessHours(int openTime, int closeTime);
     String iceCreamMachineWorking();
-    void greetCustomer(); // declare as abstract
+    // void greetCustomer(); // declare as abstract
 }
