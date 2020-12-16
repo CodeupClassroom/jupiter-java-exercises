@@ -21,6 +21,8 @@ public class ArrayLists {
         numbers.add(13);
 
         // numbers.remove(Integer.valueOf(13)); <- removes first instance of 13
+        // numbers.remove((Integer)13); <- StackOverFlow version
+
 
         // prints out ArrayList
         System.out.println(numbers);
@@ -59,6 +61,7 @@ public class ArrayLists {
 
         // .contains returns a boolean value based on whether or not a searched value exists in the ArrayList
         System.out.println(roasts.contains("dark"));
+
         // TODO: Check if the roasts list contains "espresso"
         System.out.println(roasts.contains("espresso"));
 
@@ -71,7 +74,6 @@ public class ArrayLists {
         System.out.println(emptyList.isEmpty());
 
         // TODO: Remove one medium roast from the list. If there are duplicate strings in the list, which one is removed first?
-
         boolean isRemoved = roasts.remove("medium");
         System.out.println(isRemoved);
         System.out.println(roasts);
@@ -79,13 +81,12 @@ public class ArrayLists {
         System.out.println(roasts.remove("espresso"));
 
         // TODO: Remove the element at index 4. Note the return value here vs. the previous remove method.
-
         String removedCoffee = roasts.remove(4);
         Collections.sort(roasts);
         System.out.println(roasts);
+
         // BONUS TODO: How can we get the list of roasts in alphabetical order?
-
-
-
+        Collections.sort(roasts);
+        // roasts.sort(Collections.reverseOrder());
     }
 }
