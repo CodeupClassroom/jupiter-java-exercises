@@ -28,6 +28,7 @@ public class Input {
     public boolean yesNo(String prompt){
         System.out.println(prompt);
         String input = this.sc.next();
+        sc.nextLine();
         return (input.trim().toLowerCase().equals("y") ||
                 input.trim().toLowerCase().equals("yes"));
     }
