@@ -1,10 +1,16 @@
 package annotationsLecture;
 
 public class Child extends Parent {
+
+
+
     @Override
     public void sayHello(){
         System.out.println("Hello from child class!");
     }
+
+
+
 
     /**
      * @deprecated Use newMethod instead {@link #imAMethod()}
