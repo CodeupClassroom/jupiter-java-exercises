@@ -72,7 +72,6 @@ public class FileReader {
             }
         }
 
-
         // Take a look at the actual filePath value as a string
         System.out.println(this.filePath.toString());
         this.fileLines = Files.readAllLines(this.filePath); // populate the fileLines String array
