@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class ExceptionsLec {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
 //        https://stackoverflow.com/questions/18679090/when-to-catch-the-exception-vs-when-to-throw-the-exceptions
 
         System.out.println("Our program is running.");
@@ -15,8 +15,12 @@ public class ExceptionsLec {
         /* ******************************************************** */
 
 
-        String[] days = {"Monday", "Tuesday", "Wednesday"};
-        System.out.println(days[4]); //ArrayIndexOutOfBoundsException
+//        String[] days = {"Monday", "Tuesday", "Wednesday"};
+//        System.out.println(days[4]); //ArrayIndexOutOfBoundsException
+
+
+
+
 
 
         // TODO: Try/Catch with days array
@@ -24,16 +28,22 @@ public class ExceptionsLec {
 //        try{
 //            //try this code
 //            String[] days = {"Monday", "Tuesday", "Wednesday"};
-//            System.out.println(days[4]); //ArrayIndexOutOfBoundsException
+//            System.out.println(days[0]); //ArrayIndexOutOfBoundsException
+//
 //        } catch (ArrayIndexOutOfBoundsException e){
 //            //if that code throws an error, catch it here, and do something!
-//            System.out.println("There is an out of bounds exception with our days array!");
-//            e.printStackTrace(System.out);
-////            e.printStackTrace();
+////            System.out.println("There is an out of bounds exception with our days array!");
+//            e.printStackTrace();
+//
 //        } catch (Exception e){
 //            System.out.println("General Exception");
 //            e.printStackTrace();
+//
 //        }
+
+
+
+
 
 
 //        int[] numbers = null;
@@ -64,19 +74,23 @@ public class ExceptionsLec {
 
 
         try {
-//            throw new Exception("Something went wrong"); // Generally wrong - last catch
+//            throw new Exception("Something went wrong! Oh no!!!!!"); // Generally wrong - last catch
 
-//            throw new NullPointerException("Something went wrong message"); // Something went wrong message
+//            throw new NullPointerException(); // Something went wrong message
 
 //            throw new ArrayIndexOutOfBoundsException(); //Runtime exception happened
 
 
         } catch(NullPointerException e) {
             System.out.println(e.getMessage()); //This gets the message passed when the exception is thrown
+            e.printStackTrace();
         } catch(RuntimeException e) {
-            System.out.println("Runtime exception happened");
+            System.out.println("Runtime exception happened!!! HI JUpiter!!");
+            e.printStackTrace();
         } catch(Exception e) {
             System.out.println("Something went wrong generally");
+            System.out.println(e.getMessage());
+            e.printStackTrace();
         }
 
 
@@ -91,11 +105,12 @@ public class ExceptionsLec {
 
 //        int[] numbers = {1, 2, 3};
 //        int x = 5;
+//
 //        try {
-//            x = numbers[1];
+////            x = numbers[1];
 //
 //            //TODO: Change the index to 5
-////            x = numbers[1];
+//            x = numbers[5];
 //
 //        } catch (ArrayIndexOutOfBoundsException e) {
 //            System.out.println("Exception caught!");
@@ -108,7 +123,7 @@ public class ExceptionsLec {
 //        }
 //
 //        System.out.println("The value of x: " + x);
-//
+
 //
 //        System.out.println("Yay our code keeps running!");
 
@@ -127,17 +142,16 @@ public class ExceptionsLec {
         /* *********** TRY/CATCH VS METHOD SIGNATURE ************** */
         /* ******************************************************** */
 
-//        String indentationPreference;
+        String indentationPreference;
 
-
-//        try {
-//            indentationPreference = getIndentationPreference();
-//            System.out.println("Okay, " + indentationPreference + " is a great choice.");
-//        } catch (Exception e) {
-//            System.out.println("Uh oh, something went wrong: " + e.getMessage());
-//            System.out.println("Here is some more detail:");
-//            e.printStackTrace();
-//        }
+        try {
+            indentationPreference = getIndentationPreference();
+            System.out.println("Okay, " + indentationPreference + " is a great choice.");
+        } catch (Exception e) {
+            System.out.println("Uh oh, something went wrong: " + e.getMessage());
+            System.out.println("Here is some more detail:");
+            e.printStackTrace();
+        }
 
 //        String indentationPreference = getIndentationPreference();
 //        System.out.println("Okay, " + indentationPreference + " is a great choice.");
@@ -153,6 +167,7 @@ public class ExceptionsLec {
         } catch (Exception e) {
             System.out.println("EXCEPTION!!!");
             System.out.println(e.getMessage());
+            e.printStackTrace(System.out);
         }
     }
 

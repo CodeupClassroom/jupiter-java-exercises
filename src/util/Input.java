@@ -44,13 +44,6 @@ public class Input {
 
     public int getInt(int min, int max){
         return getInt(min,max,"Please enter an int between "+min+" and "+max);
-//        int input;
-//        do{
-//            System.out.printf("Please enter an int between %d and %d%n", min, max);
-//            input = this.sc.nextInt();
-//        }while(input < min || input > max);
-//
-//        return input;
     }
 
     public int getInt(int min, int max,String prompt){
