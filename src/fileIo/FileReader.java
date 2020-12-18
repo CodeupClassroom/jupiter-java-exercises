@@ -1,108 +1,118 @@
 package fileIo;
 
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class FileReader {
 
     // properties for this class
-    // read in the file and parse it
-    private String directoryName;   // i.e. 'data', 'src/fileIo', etc
-    private String fileName;        // i.e. 'day18.txt', 'jolts.txt', etc
-    private String logFileName;     // will hold logging info
-    private Path directoryPath;     // Path representation for 'data', 'src/fileIo', etc
-    private Path filePath;          // Path representation for 'data/day18.txt', 'src/fileIo/jolts.txt', etc
-    private List<String> fileLines; // A list to iterate through with each line of the file
-    private List<String> logLines;  // A String list to hold all of the logging messages
-    private Path logFilePath;       // Path representation of the logging file
+    //  goal: read in a file and parse through it
+    private String directoryName;  // i.e. 'data', 'src/fileIo'
+    private String fileName;       // i.e. 'day18.txt', 'jolts.txt'
+    private String logFileName;    // will hold logging info
+    private Path directoryPath;    // Path representation of the parent directory for our files
+    private Path filePath;   // Path representation for the actual file itself
+    private Path logFilePath; // Path representation of the log file
+    private List<String> fileLines; // Holding spot for the content inside of the data file itself
+    private List<String> logFileLines; // Holding spot for the content inside of the log file
 
 
     // Constructor
+    //  Want to send in a directory path name and a file name, logFile name, and generate EVERYTHING from just those two values
     public FileReader(String directoryName, String fileName, String logFileName) throws IOException {
         this.directoryName = directoryName;
         this.fileName = fileName;
         this.logFileName = logFileName;
-        this.directoryPath = Paths.get(directoryName);
+        // Instantiating Path values
+        this.directoryPath = Paths.get(directoryName); // Paths.get("data")
         this.filePath = Paths.get(directoryName, fileName);
         this.logFilePath = Paths.get(directoryName, logFileName);
 
-        // Create a logging file if it doesn't already exist
+        // Check if files exist, and create them if they don't currently exist
+        // Log File
         if (Files.notExists(this.logFilePath)) {
             try {
                 Files.createFile(this.logFilePath);
             } catch (IOException e) {
-                // if there is an issue creating the log file, let's just crash the whole party
-                //   because we want to be able to log all errors
+                // Store this exception message in the log file
+                // if there is an issue creating the log file, let's just crash the whole party and throw an IOException
                 throw new IOException("Unable to create the logfile (" + this.logFileName + ")!");
             }
         }
 
-        // Check to see if the directory path even exists
-        //    create it, if it doesn't exist
+        // Directory for data file ('data'), ('src/fileIo')
         if (Files.notExists(this.directoryPath)) {
             try {
-                Files.createDirectories(this.directoryPath); // createDirectory (only creates the single directory) vs createDirectories (creates non-existent parent directories if necessary)
+                Files.createDirectories(this.directoryPath); // createDirectories will create any missing parent directories along with the enclosing directory
             } catch (IOException e) {
-                // Add the error message to the log
-                // this.logLines.add(e.getMessage());
-                Files.write(this.logFilePath, Arrays.asList(e.getMessage()), StandardOpenOption.APPEND);
+                // Add this error message to the log
+                // Files.write(Path filePath, List<String> message(s), appendOption)
+                // could initialize a List<String> like this, and send it in as the second argument in the Files.write() method
+                // List<String> errorMessage = new ArrayList<>();
+                // errorMessage.add(e.getMessage());
+
+                Files.write(this.logFilePath, Arrays.asList(e.getMessage()), StandardOpenOption.APPEND); // append to the end of the log file
                 throw new IOException("Unable to create the data directory (" + this.directoryName + ")!");
-                // stop all execution so we can investigate what went wrong
+                // stop all execution
             }
         }
 
-        // Check to see if the file path even exists
-        //    create it, if it doesn't exist
-        if (Files.notExists(this.filePath)) {
+        // Data File ('day18.txt')
+        if (Files.notExists(this.filePath)) { // i.e. 'src/day18.txt'
+            // if we've made into this if statement, that means the file DOES NOT exist, so let's create it!
             try {
                 Files.createFile(this.filePath);
             } catch (IOException e) {
-                // Add the error message to the log
-                // this.logLines.add(e.getMessage());
-                Files.write(this.logFilePath, Arrays.asList(e.getMessage()), StandardOpenOption.APPEND);
+                Files.write(this.logFilePath, Arrays.asList(e.getMessage()), StandardOpenOption.APPEND); // append to the end of the log file
                 throw new IOException("Unable to create the data file (" + this.fileName + ")!");
-                // stop all execution so we can investigate what went wrong
             }
         }
 
-        // Take a look at the actual filePath value as a string
-        System.out.println(this.filePath.toString());
-        this.fileLines = Files.readAllLines(this.filePath); // populate the fileLines String array
+
+        // Test if the instantiation worked
+        System.out.println(filePath); // display the file path for the passed in arguments
+        this.fileLines = Files.readAllLines(this.filePath); // gives me every line in (i.e. 'day18.txt' as a String, inside of a List<String>
+
     }
 
+    // PSVM (you can think of this as being 20 files away from this file - it is STATIC
     public static void main(String[] args) throws IOException {
-        FileReader adventDayEighteen = new FileReader("data", "day18.txt", "day18_log.txt");
-        FileReader jolts = new FileReader("src/fileIo", "jolts.txt", "jolts_log.txt");
+        // Instantiate a FileReader object, and see if it works
+        FileReader day18Reader = new FileReader("data", "day18.txt", "day18.log");
+        day18Reader.writeToLog("Successfully read the " + day18Reader.getFileName() + " file!");
 
-        adventDayEighteen.writeToLog("Initialized file reader");
-        jolts.writeToLog("Initialized file reader");
+        // Set up a new instance to access the jolts.txt file
+        FileReader joltsReader = new FileReader("src/fileIo", "jolts.txt", "jolts.log");
+        joltsReader.writeToLog("Successfully read the " + joltsReader.getFileName() + " file!");
 
-        System.out.println(adventDayEighteen.getFileLines().get(0));
-        System.out.println(jolts.getFileLines().get(0));
+        System.out.println("Day18 file, here's the first line:");
+        System.out.println(day18Reader.getFileLines().get(0));
 
-        adventDayEighteen.writeToLog("Retrieved first line of all data file lines.");
-        jolts.writeToLog("Retrieved first line of all data file lines.");
+        System.out.println("Jolts file, here's the first line:");
+        System.out.println(joltsReader.getFileLines().get(0));
     }
 
-    // Custom message to easily write to the log whenever we want to!
+
+    // Custom Method - want to be able to easily write a message to the log, without some enormous nested function calling nonsense
     public void writeToLog(String message) throws IOException {
         try {
-            Files.write(this.getLogFilePath(), Arrays.asList(message), StandardOpenOption.APPEND);
+            // write the string 'message' to the log file of THIS INSTANCE of a FileReader object
+            Files.write(this.logFilePath, Arrays.asList(message), StandardOpenOption.APPEND);
         } catch(IOException e) {
-            // store the exception message in our log file
             Files.write(this.logFilePath, Arrays.asList(e.getMessage()), StandardOpenOption.APPEND);
-            throw new IOException("Unable to write exception message to log file!");
+            throw new IOException("Unable to write custom message to log file");
         }
     }
 
-    // Getters & Setters
+
+
+    // Getters and Setters
     public String getDirectoryName() {
         return directoryName;
     }
@@ -143,6 +153,14 @@ public class FileReader {
         this.filePath = filePath;
     }
 
+    public Path getLogFilePath() {
+        return logFilePath;
+    }
+
+    public void setLogFilePath(Path logFilePath) {
+        this.logFilePath = logFilePath;
+    }
+
     public List<String> getFileLines() {
         return fileLines;
     }
@@ -151,19 +169,11 @@ public class FileReader {
         this.fileLines = fileLines;
     }
 
-    public List<String> getLogLines() {
-        return logLines;
+    public List<String> getLogFileLines() {
+        return logFileLines;
     }
 
-    public void setLogLines(List<String> logLines) {
-        this.logLines = logLines;
-    }
-
-    public Path getLogFilePath() {
-        return logFilePath;
-    }
-
-    public void setLogFilePath(Path logFilePath) {
-        this.logFilePath = logFilePath;
+    public void setLogFileLines(List<String> logFileLines) {
+        this.logFileLines = logFileLines;
     }
 }
